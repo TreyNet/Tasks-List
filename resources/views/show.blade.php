@@ -5,19 +5,21 @@
 @section('content')
 
     <div class="mb-4">
-        <a href={{route('tasks.index')}} class="font-medium text-gray-700 underline decoration-pink-500">< Go back</a>
+        <a href={{ route('tasks.index') }} class="font-medium text-gray-700 underline decoration-pink-500">
+            < Go back</a>
     </div>
 
-    <p class="mb-4 text-slate-700">{{$task->description}}</p>
+    <p class="mb-4 text-slate-700">{{ $task->description }}</p>
 
-        @if($task->long_description)
-            <p class="mb-4 text-slate-700">{{$task->long_description}}</p>
-        @endif
+    @if ($task->long_description)
+        <p class="mb-4 text-slate-700">{{ $task->long_description }}</p>
+    @endif
 
-    <p class="mb-4 text-sm text-slate-500">Created: {{$task->created_at->diffForHumans()}} | Updated: {{$task->updated_at->diffForHumans()}}</p>
+    <p class="mb-4 text-sm text-slate-500">Created: {{ $task->created_at->diffForHumans() }} | Updated:
+        {{ $task->updated_at->diffForHumans() }}</p>
 
     <p class="mb-4">
-        @if($task->completed)
+        @if ($task->completed)
             <span class="font-medium text-green-500">Completed</span>
         @else
             <span class="font-medium text-red-500">Not Completed</span>
@@ -25,21 +27,23 @@
     </p>
 
     <div class="flex gap-2">
-        <a href="{{route('task.edit',['task'=>$task])}}" 
-        class="rounded-md px-2 py-1 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slade-700/10 hover:bg-slate-50">Edit</a>
+        <a href="{{ route('task.edit', ['task' => $task]) }}"
+            class="rounded-md px-2 py-1 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slade-700/10 hover:bg-slate-50">Edit</a>
 
-        <form method="POST" action="{{route('tasks.toggle-complete',['task'=>$task])}}">
+        <form method="POST" action="{{ route('tasks.toggle-complete', ['task' => $task]) }}">
             @csrf
             @method('PUT')
-                <button type="submit" class="rounded-md px-2 py-1 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slade-700/10 hover:bg-slate-50">
-                    Mark as {{$task->completed ? 'Not completed' : 'Completed'}}
-                </button>
+            <button type="submit"
+                class="rounded-md px-2 py-1 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slade-700/10 hover:bg-slate-50">
+                Mark as {{ $task->completed ? 'Not completed' : 'Completed' }}
+            </button>
         </form>
 
-        <form action="{{route('tasks.destroy', ['task'=>$task])}}" method="POST">
+        <form action="{{ route('tasks.destroy', ['task' => $task]) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="rounded-md px-2 py-1 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slade-700/10 hover:bg-slate-50">Delete</button>
+            <button type="submit"
+                class="rounded-md px-2 py-1 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slade-700/10 hover:bg-slate-50">Delete</button>
         </form>
     </div>
 

@@ -10,11 +10,14 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'description', 'long_description'];
-    //protected $guarded = ['password'];
+    /** Protected $guarded = ['password']; 
+     * to specify attributes that are not mass assignable.
+    */
 
-    public function toggleComplete(){
+    public function toggleComplete()
+    {
+        // Method to toggle the 'completed' attribute of a Task instance.
         $this->completed = !$this->completed;
         $this->save();
     }
-
 }

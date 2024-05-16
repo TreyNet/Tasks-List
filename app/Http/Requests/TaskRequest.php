@@ -15,10 +15,10 @@ class TaskRequest extends FormRequest
     public function rules()
     {
         return [
-            
-                'title' =>'required|max:255',
-                'description'=>'required',
-                'long_description' => 'required'
+            // Specifies the validation rules for incoming request data.
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'long_description' => 'required'
         ];
     }
 }
