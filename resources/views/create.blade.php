@@ -1,4 +1,6 @@
 {{-- 
+    Blade Template: Embedded View
+
     Description:
     This view extends a main layout and includes a form partial.
     It's commonly used to render a page with a form while maintaining a consistent layout across the application.
